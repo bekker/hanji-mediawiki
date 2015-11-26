@@ -1,0 +1,35 @@
+{
+	"name": "Hanji",
+	"version": "1.0",
+	"author": "Jang Ryeol",
+	"url": "https://github.com/bekker/hanji-mediawiki",
+	"descriptionmsg": "example-desc",
+	"namemsg": "skinname-example",
+	"license-name": "GPL",
+	"type": "skin",
+	"ValidSkinNames": {
+		"example": "Example"
+	},
+	"MessagesDirs": {
+		"Example": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.example": {
+			"styles": {
+				"resources/screen.css": {
+					"media": "screen"
+				}
+			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Hanji"
+	},
+	"AutoloadClasses": {
+		"SkinExample": "Hanji.skin.php"
+	},
+	"manifest_version": 1
+}
