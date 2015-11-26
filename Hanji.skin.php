@@ -1,19 +1,19 @@
 <?php
 /**
- * Skin file for the Example skin.
+ * Skin file for the Hanji skin.
  *
  * @file
  * @ingroup Skins
  */
 
 /**
- * SkinTemplate class for the Example skin
+ * SkinTemplate class
  *
  * @ingroup Skins
  */
-class SkinExample extends SkinTemplate {
-	public $skinname = 'example', $stylename = 'Example',
-		$template = 'ExampleTemplate', $useHeadElement = true;
+class SkinHanji extends SkinTemplate {
+	public $skinname = 'hanji', $stylename = 'Hanji',
+		$template = 'HanjiTemplate', $useHeadElement = true;
 
 	/**
 	 * Add CSS via ResourceLoader
@@ -23,17 +23,17 @@ class SkinExample extends SkinTemplate {
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( array(
-			'mediawiki.skinning.interface', 'skins.example'
+			'mediawiki.skinning.interface', 'skins.hanji'
 		) );
 	}
 }
 
 /**
- * BaseTemplate class for the Example skin
+ * BaseTemplate class
  *
  * @ingroup Skins
  */
-class ExampleTemplate extends BaseTemplate {
+class HanjiTemplate extends BaseTemplate {
 	/**
 	 * Outputs a single sidebar portlet of any kind.
 	 */
