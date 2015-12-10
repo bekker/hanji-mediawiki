@@ -23,8 +23,9 @@ class SkinHanji extends SkinTemplate {
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( array(
-			'mediawiki.skinning.interface', 'skins.hanji'
-		) );
+			'mediawiki.skinning.interface', 'skins.hanji.styles'
+		));
+		$out->addModuleScripts( array('skins.hanji.js'));
 	}
 }
 
@@ -73,26 +74,151 @@ class HanjiTemplate extends BaseTemplate {
 		<?php
 	}
 
+	private function outputDropdown( $box ) {
+		if ( !$box['content'] ) {
+			return;
+		}
+
+		?>
+		<div class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>" style="display:inline-block;"
+			<?php echo Linker::tooltip( $box['id'] ) ?>>
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <?php
+				if ( isset( $box['headerMessage'] ) ) {
+					$this->msg( $box['headerMessage'] );
+				} else {
+					echo htmlspecialchars( $box['header'] );
+				}
+				?> <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+          <?php
+			if ( is_array( $box['content'] ) ) {
+				echo '<li>';
+				foreach ( $box['content'] as $key => $item ) {
+					echo $this->makeListItem( $key, $item );
+				}
+				echo '</li>';
+			} else {
+				echo $box['content'];
+			}?>
+          </ul>
+        </div>
+		<?php
+	}
+
+	private function outputNavDropdown( $box ) {
+		if ( !$box['content'] ) {
+			return;
+		}
+
+		?>
+		<li class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"
+			<?php echo Linker::tooltip( $box['id'] ) ?>>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <?php
+				if ( isset( $box['headerMessage'] ) ) {
+					$this->msg( $box['headerMessage'] );
+				} else {
+					echo htmlspecialchars( $box['header'] );
+				}
+				?> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <?php
+			if ( is_array( $box['content'] ) ) {
+				echo '<li>';
+				foreach ( $box['content'] as $key => $item ) {
+					echo $this->makeListItem( $key, $item );
+				}
+				echo '</li>';
+			} else {
+				echo $box['content'];
+			}?>
+          </ul>
+        </li>
+		<?php
+	}
+
 	/**
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() {
 		$this->html( 'headelement' ) ?>
-		<div id="mw-wrapper">
-			<a
-				id="p-logo"
-				role="banner"
-				href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>"
-				<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>
-			>
-				<img
-					src="<?php $this->text( 'logopath' ) ?>"
-					alt="<?php $this->text( 'sitename' ) ?>"
-				/>
-			</a>
+		<div class="navbar navbar-inverse navbar-static-top" role="navigation" id="nav">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+					<a
+						href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>"
+						class="navbar-brand"
+						<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>
+					>
+						<img src="<?php $this->text( 'logopath' ) ?>" alt="logo" />
+						<span><?php $this->text( 'sitename' ) ?></span>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right" id="navbar-right">
+						<li>
+						<form
+							action="<?php $this->text( 'wgScript' ) ?>"
+							role="search"
+							class="mw-portlet navbar-form"
+							id="p-search"
+						>
+							<div class="form-group">
+								<input type="hidden"name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
+								<?php echo $this->makeSearchInput( array( "id" => "searchInput", "class" => "form-control" ) ) ?>
+							</div>
+							<?php echo $this->makeSearchButton( 'go' , array("class" => "btn btn-default")) ?>
+							<!--h3><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h3-->
+						</form></li>
+						<?php
+							$this->outputNavDropdown( array(
+								'id' => 'p-personal',
+								'headerMessage' => 'personaltools',
+								'content' => $this->getPersonalTools(),
+							) );
 
+							$this->outputNavDropdown( array(
+								'id' => 'p-variants',
+								'headerMessage' => 'variants',
+								'content' => $this->data['content_navigation']['variants'],
+							) );
+							foreach ( $this->getSidebar() as $boxName => $box ) {
+								$this->outputNavDropdown( $box );
+							}
 
+						 ?>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+		<div id="mw-wrapper" class="container">
 			<div class="mw-body" role="main">
+				<div class="pull-right">
+				<?php
+				$this->outputDropdown( array(
+								'id' => 'p-namespaces',
+								'headerMessage' => 'namespaces',
+								'content' => $this->data['content_navigation']['namespaces'],
+							) );
+				$this->outputDropdown( array(
+						'id' => 'p-views',
+						'headerMessage' => 'views',
+						'content' => $this->data['content_navigation']['views'],
+					) );
+				$this->outputDropdown( array(
+					'id' => 'p-actions',
+					'headerMessage' => 'actions',
+					'content' => $this->data['content_navigation']['actions'],
+				) );?>
+				</div>
+
 				<?php if ( $this->data['sitenotice'] ) { ?>
 					<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
 				<?php } ?>
@@ -127,80 +253,42 @@ class HanjiTemplate extends BaseTemplate {
 			</div>
 
 
-			<div id="mw-navigation">
+			<!--div id="mw-navigation">
 				<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
-
-				<form
-					action="<?php $this->text( 'wgScript' ) ?>"
-					role="search"
-					class="mw-portlet"
-					id="p-search"
-				>
-					<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
-
-					<h3><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h3>
-
-					<?php echo $this->makeSearchInput( array( "id" => "searchInput" ) ) ?>
-					<?php echo $this->makeSearchButton( 'go' ) ?>
-
-				</form>
 
 				<?php
 
-				$this->outputPortlet( array(
-					'id' => 'p-personal',
-					'headerMessage' => 'personaltools',
-					'content' => $this->getPersonalTools(),
-				) );
-
-				$this->outputPortlet( array(
-					'id' => 'p-namespaces',
-					'headerMessage' => 'namespaces',
-					'content' => $this->data['content_navigation']['namespaces'],
-				) );
-				$this->outputPortlet( array(
-					'id' => 'p-variants',
-					'headerMessage' => 'variants',
-					'content' => $this->data['content_navigation']['variants'],
-				) );
-				$this->outputPortlet( array(
-					'id' => 'p-views',
-					'headerMessage' => 'views',
-					'content' => $this->data['content_navigation']['views'],
-				) );
-				$this->outputPortlet( array(
-					'id' => 'p-actions',
-					'headerMessage' => 'actions',
-					'content' => $this->data['content_navigation']['actions'],
-				) );
-
-				foreach ( $this->getSidebar() as $boxName => $box ) {
-					$this->outputPortlet( $box );
-				}
-
 				?>
-			</div>
+			</div-->
 
-			<div id="mw-footer">
-				<?php foreach ( $this->getFooterLinks() as $category => $links ) { ?>
-					<ul role="contentinfo">
-						<?php foreach ( $links as $key ) { ?>
-							<li><?php $this->html( $key ) ?></li>
+		</div>
+		<hr>
+		<div id="mw-footer">
+			<div class="container">
+			<div class="row">
+			<div class="col-md-6">
+			<?php foreach ( $this->getFooterLinks() as $category => $links ) { ?>
+						<ul role="contentinfo">
+							<?php foreach ( $links as $key ) { ?>
+								<li><?php $this->html( $key ) ?></li>
+							<?php } ?>
+						</ul>
+					<?php } ?>
+			</div>
+			<div class="col-md-6">
+			<ul role="contentinfo">
+						<?php foreach ( $this->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) { ?>
+							<li>
+								<?php
+								foreach ( $footerIcons as $icon ) {
+									echo $this->getSkin()->makeFooterIcon( $icon );
+								}
+								?>
+							</li>
 						<?php } ?>
 					</ul>
-				<?php } ?>
-
-				<ul role="contentinfo">
-					<?php foreach ( $this->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) { ?>
-						<li>
-							<?php
-							foreach ( $footerIcons as $icon ) {
-								echo $this->getSkin()->makeFooterIcon( $icon );
-							}
-							?>
-						</li>
-					<?php } ?>
-				</ul>
+			</div>
+			</div>
 			</div>
 		</div>
 

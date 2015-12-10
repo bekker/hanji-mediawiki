@@ -1,7 +1,7 @@
 {
 	"@metadata": {
-		"authors": [ "..." ]
+		"authors": [ "Jang Ryeol" ]
 	},
 	"skinname-hanji": "Hanji",
-	"example-desc": "An example skin showcasing the best practices"
+	"hanji-desc": "Hanji Skin"
 }

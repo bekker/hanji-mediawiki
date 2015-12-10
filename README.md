@@ -6,4 +6,6 @@ Hanji for MediaWiki skin
 Mediawiki 1.25 and above
 
 ## License
-GPL. Refer to the LICENSE file.
+GPL-2.0+
+
+Refer to the LICENSE file.

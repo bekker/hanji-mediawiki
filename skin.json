@@ -16,12 +16,26 @@
 		]
 	},
 	"ResourceModules": {
-		"skins.hanji": {
+		"skins.hanji.styles": {
+		  	"position" : "top",
 			"styles": {
-				"resources/screen.css": {
+				"resources/bootstrap/css/bootstrap.min.css": {
 					"media": "screen"
+				},
+				"resources/clearFont.css": {
+				  "media": "screen"
+				},
+			    "resources/screen.css": {
+				  "media": "screen"
 				}
 			}
+		},
+	  	"skins.hanji.js": {
+		  "position" : "bottom",
+		  "scripts": [
+			"resources/main.js",
+			"resources/bootstrap/js/bootstrap.min.js"
+		  ]
 		}
 	},
 	"ResourceFileModulePaths": {

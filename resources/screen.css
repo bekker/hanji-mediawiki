@@ -1,5 +1,83 @@
 /**
  * Basic styling for the Example skin.
  */
+#nav {
+    background: #0053a1;
+    border: none;
+    margin-bottom:0;}
+#nav .navbar-right {
+    margin-top: 1.3rem;
+}
+#nav .navbar-form {
+    margin:0;
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+#navbar-right > li > a {
+    color: #b6cfed;
+    padding:0.2rem 1rem;
+    transition: color 0.5s ease; }
+#navbar-right > li > a:hover {
+    color: #f2f9ff; }
+#navbar-right > li > p {
+    padding:0.2rem;
+    color: #b6cfed;}
+
+#nav form {
+    margin-right: 1rem;
+}
+#nav .logo-desktop {
+    height: 45px; }
+
+.firstHeading {
+    margin-top:0;
+}
+
+/*
+#nav.on-top {
+    border-bottom-color: rgba(77, 77, 77, 0);
+    padding-top: 1.5rem;
+    background: #222; }*/
 
 /* Page layout */
+
+
+
+.navbar-brand {
+    padding:0;
+}
+.navbar-brand > img {
+    width:50px;
+    height:50px;
+    display:inline-block !important;
+}
+
+
+.navbar-brand > span{
+    color:#fff;
+    display:inline-block;
+}
+
+@media (max-width: 768px) {
+    fieldset td {
+        display:block;
+        text-align: left !important;
+        width:auto !important;
+    }
+}
+
+/* Bootstrap overrapping */
+code {
+    color: black;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 1px 4px;
+}
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+        border: none;
+    }
