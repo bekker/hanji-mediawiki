@@ -15,6 +15,12 @@ class SkinHanji extends SkinTemplate {
 	public $skinname = 'hanji', $stylename = 'Hanji',
 		$template = 'HanjiTemplate', $useHeadElement = true;
 
+
+	public function initPage( OutputPage $out ) {
+		parent::initPage( $out );
+		$out->addHeadItem('viewport', '<meta name="viewport" content="width=device-width,initial-scale=1">');
+	}
+
 	/**
 	 * Add CSS via ResourceLoader
 	 *
@@ -64,7 +70,7 @@ class HanjiTemplate extends BaseTemplate {
 			if ( is_array( $box['content'] ) ) {
 				echo '<ul>';
 				foreach ( $box['content'] as $key => $item ) {
-					echo $this->makeListItem( $key, $item );
+					echo $this->makeListItem( $key, $item);
 				}
 				echo '</ul>';
 			} else {
@@ -138,6 +144,22 @@ class HanjiTemplate extends BaseTemplate {
 		<?php
 	}
 
+	private function outputButton( $box ) {
+		if ( !$box['content'] ) {
+			return;
+		}
+
+		?>
+		<?php
+			if ( is_array( $box['content'] ) ) {
+				foreach ( $box['content'] as $key => $item ) {
+					echo $this->makeListItem( $key, $item, array('tag' => 'button', 'class' => 'btn btn-default') );
+				}
+			} else {
+				echo $box['content'];
+			}
+	}
+
 	/**
 	 * Outputs the entire contents of the page
 	 */
@@ -200,18 +222,19 @@ class HanjiTemplate extends BaseTemplate {
 		</div>
 		<div id="mw-wrapper" class="container">
 			<div class="mw-body" role="main">
-				<div class="pull-right">
+				<div class="body-dropdown">
 				<?php
+				$this->outputButton( array(
+						'id' => 'p-views',
+						'headerMessage' => 'views',
+						'content' => $this->data['content_navigation']['views'],
+					) );
 				$this->outputDropdown( array(
 								'id' => 'p-namespaces',
 								'headerMessage' => 'namespaces',
 								'content' => $this->data['content_navigation']['namespaces'],
 							) );
-				$this->outputDropdown( array(
-						'id' => 'p-views',
-						'headerMessage' => 'views',
-						'content' => $this->data['content_navigation']['views'],
-					) );
+
 				$this->outputDropdown( array(
 					'id' => 'p-actions',
 					'headerMessage' => 'actions',
@@ -244,7 +267,7 @@ class HanjiTemplate extends BaseTemplate {
 					</div>
 
 					<?php $this->html( 'bodytext' ) ?>
-
+<!------bodytext end ------->
 					<?php $this->html( 'catlinks' ) ?>
 
 					<?php $this->html( 'dataAfterContent' ); ?>
