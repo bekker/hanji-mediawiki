@@ -7,7 +7,7 @@ Hanji for MediaWiki skin
 Mediawiki 1.25 and above
 
 ## Install
-Clone this repository on your mediawiki `skins` folder. Then add the following in your `LocalSettings.php`:
+Clone this repository on your mediawiki `skins` directory. Then rename the directory as `Hanji`. Add the following in your `LocalSettings.php`:
 ```php
 require_once "$IP/skins/hanji-mediawiki/Hanji.php";
 ```

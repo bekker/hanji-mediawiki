@@ -41,7 +41,6 @@ img {
 }
 
 .container {
-    max-width:800px;
     margin: 0 auto;
 }
 
@@ -109,9 +108,10 @@ code {
     border-radius: 2px;
     padding: 1px 4px;
 }
-    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-        border: none;
-    }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+}
 
 .mw-body .external {
     background-position: center right;
