@@ -1,16 +1,49 @@
+html, body {
+    background-color: #eee;
+}
+
+#body-wrapper {
+    padding:2rem 3rem;
+    background-color: #fff;
+}
+
 /**
- * Basic styling for the Example skin.
+ * Navbar Collapse Disable
+ */
+.navbar-collapse.collapse {
+    display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+    float: left !important;
+}
+
+.navbar-right {
+    float: right!important;
+}
+
+.navbar-header:after, .navbar-nav:before {
+    display: none;
+    content: "";
+}
+
+.navbar-header {
+    margin-left: 0;
+}
+/**
+ * Navigation Bar.
  */
 #nav {
     background: #0053a1;
+    min-height: 40px;
     border: none;
-    margin-bottom:0;}
+    margin-bottom:0;
+}
+
 @media (max-width:768px){
     #nav { z-index : 0; }
 }
-#nav .navbar-right {
-    margin-top: 1.3rem;
-}
+
 #nav .navbar-form {
     margin:0;
 }
@@ -20,54 +53,100 @@ img {
     height:auto;
 }
 
-#navbar-right > li > a {
+.navbar-inverse .navbar-nav > li > a {
     color: #b6cfed;
-    padding:0.2rem 1rem;
+    padding:1rem 1rem;
     transition: color 0.5s ease; }
-#navbar-right > li > a:hover {
+.navbar-inverse .navbar-nav > li > a:hover {
     color: #f2f9ff; }
-#navbar-right > li > p {
+.navbar-inverse .navbar-nav > li > p {
     padding:0.2rem;
     color: #b6cfed;}
 
-#nav form {
-    margin-right: 1rem;
-}
 #nav .logo-desktop {
-    height: 45px; }
+    height: 35px;
+}
+
+#nav .dropdown {
+    margin: 0;
+}
+
+.navbar-brand {
+    height:40px;
+    padding:5px 0 0 0;
+    margin-left:0 !important;
+    margin-right:2rem;
+}
+.navbar-brand > img {
+    width:35px;
+    height:35px;
+    display:inline-block !important;
+}
+
+.navbar-brand > span{
+    color:#fff;
+    display:inline-block;
+}
+
+
+
+/**
+ * Search box
+ */
+
+.search-box {
+    width: 270px;
+}
+
+.form-group {
+    margin:0;
+}
+
+#searchInput {
+    display: inline-block;
+    width: 220px;
+	height: 40px;
+    border-radius:0;
+}
+
+#searchBtn {
+    float:right;
+    width: 50px;
+    height: 40px;
+    border-radius:0;
+}
+
+@media (max-width:991px){
+    .container {
+        width: 100%;
+    }
+    .search-box {
+        width: calc(100% + 30px);
+        margin: 0 -15px !important;
+    }
+
+    #searchInput {
+        width: calc(100% - 50px);
+    }
+}
 
 .firstHeading {
     margin-top:0;
+    padding-top:0;
+    border-bottom: none;
+}
+
+.mw-body-text {
+    margin-top:3rem;
 }
 
 .container {
     margin: 0 auto;
 }
 
-/*
-#nav.on-top {
-    border-bottom-color: rgba(77, 77, 77, 0);
-    padding-top: 1.5rem;
-    background: #222; }*/
 
 /* Page layout */
 
-
-
-.navbar-brand {
-    padding:0;
-}
-.navbar-brand > img {
-    width:50px;
-    height:50px;
-    display:inline-block !important;
-}
-
-
-.navbar-brand > span{
-    color:#fff;
-    display:inline-block;
-}
 
 @media (min-width: 768px) {
     .body-dropdown {
@@ -100,7 +179,7 @@ fieldset tr {
     }
 }
 
-/* Bootstrap overrapping */
+/* Bootstrap overlapping */
 code {
     color: black;
     background-color: #f9f9f9;
