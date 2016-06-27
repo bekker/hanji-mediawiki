@@ -2,11 +2,6 @@ html, body {
     background-color: #eee;
 }
 
-#body-wrapper {
-    padding:2rem 3rem;
-    background-color: #fff;
-}
-
 /**
  * Navbar Collapse Disable
  */
@@ -16,6 +11,10 @@ html, body {
 
 .navbar-nav>li, .navbar-nav {
     float: left !important;
+}
+
+.navbar-nav {
+    margin:0;
 }
 
 .navbar-right {
@@ -40,8 +39,8 @@ html, body {
     margin-bottom:0;
 }
 
-@media (max-width:768px){
-    #nav { z-index : 0; }
+.dropdown-menu {
+    z-index : 1;
 }
 
 #nav .navbar-form {
@@ -53,15 +52,39 @@ img {
     height:auto;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.nav-dropdown {
+    float: left;
+    height: 40px;
+}
+
+.nav-dropdown > li {
+    display: inline-block;
+}
+
+.nav-dropdown > li > a {
     color: #b6cfed;
     padding:1rem 1rem;
-    transition: color 0.5s ease; }
-.navbar-inverse .navbar-nav > li > a:hover {
-    color: #f2f9ff; }
-.navbar-inverse .navbar-nav > li > p {
+    transition: color 0.5s ease;
+}
+
+.nav-dropdown > li > a,
+.nav-dropdown > li > a:hover,
+.nav-dropdown > li > a:focus{
+    background: none;
+}
+
+.nav-dropdown > .open > a,
+.nav-dropdown > .open > a:hover,
+.nav-dropdown > .open > a:focus {
+    background-color: rgba(255,255,255,0.2);
+}
+.nav-dropdown > li > a:hover {
+    color: #f2f9ff;
+}
+.nav-dropdown > li > p {
     padding:0.2rem;
-    color: #b6cfed;}
+    color: #b6cfed;
+}
 
 #nav .logo-desktop {
     height: 35px;
@@ -130,23 +153,26 @@ img {
     }
 }
 
-.firstHeading {
-    margin-top:0;
-    padding-top:0;
-    border-bottom: none;
-}
-
-.mw-body-text {
-    margin-top:3rem;
-}
-
 .container {
     margin: 0 auto;
 }
 
 
 /* Page layout */
+#body-wrapper {
+    padding:4rem 3rem;
+    background-color: #fff;
+}
 
+.firstHeading {
+    margin-top:0;
+    padding-top:0;
+    border-bottom: none;
+}
+
+#mw-content-text {
+    margin-top:4rem;
+}
 
 @media (min-width: 768px) {
     .body-dropdown {

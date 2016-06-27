@@ -177,7 +177,7 @@ class HanjiTemplate extends BaseTemplate {
 						<span><?php $this->text( 'sitename' ) ?></span>
 					</a>
 				</div>
-				<ul class="nav navbar-nav">
+				<ul class="nav nav-dropdown">
 					<?php
 					$this->outputNavDropdown( array(
 						'id' => 'p-variants',
@@ -190,7 +190,7 @@ class HanjiTemplate extends BaseTemplate {
 					?>
 				</ul>
 
-				<div class="nav navbar-nav navbar-right">
+				<div class="nav nav-dropdown navbar-right">
 					<?php
 					$this->outputNavDropdown( array(
 						'id' => 'p-personal',
