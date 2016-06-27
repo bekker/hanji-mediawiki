@@ -1,7 +1,7 @@
 # Hanji
 
 Hanji for MediaWiki skin
-[Example Here](http://dev.jipium.com/wiki/Dev_Wiki)
+[Example Here](http://dev.ryeol.me/wiki/Dev_Wiki)
 
 ## Requirements
 Mediawiki 1.25 and above
