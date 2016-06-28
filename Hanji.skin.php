@@ -58,7 +58,9 @@ class HanjiTemplate extends BaseTemplate {
 		>
 			<h3>
 				<?php
-				if ( isset( $box['headerMessage'] ) ) {
+				if ( isset( $box['headerSafe'] ) ) {
+					echo $box['headerSafe'];
+				} else if ( isset( $box['headerMessage'] ) ) {
 					$this->msg( $box['headerMessage'] );
 				} else {
 					echo htmlspecialchars( $box['header'] );
@@ -89,14 +91,16 @@ class HanjiTemplate extends BaseTemplate {
 		<div class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>" style="display:inline-block;"
 			<?php echo Linker::tooltip( $box['id'] ) ?>>
           <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <?php
-				if ( isset( $box['headerMessage'] ) ) {
+			<?php
+				if ( isset( $box['headerSafe'] ) ) {
+					echo $box['headerSafe'];
+				} else if ( isset( $box['headerMessage'] ) ) {
 					$this->msg( $box['headerMessage'] );
 				} else {
 					echo htmlspecialchars( $box['header'] );
 				}
 				?> <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+				<ul class="dropdown-menu <?php if (isset($box['ulClass'])) echo $box['ulClass'] ?>">
           <?php
 			if ( is_array( $box['content'] ) ) {
 				echo '<li>';
@@ -121,14 +125,16 @@ class HanjiTemplate extends BaseTemplate {
 		<li class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"
 			<?php echo Linker::tooltip( $box['id'] ) ?>>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <?php
-				if ( isset( $box['headerMessage'] ) ) {
+				<?php 
+				if ( isset( $box['headerSafe'] ) ) {
+					echo $box['headerSafe'];
+				} else if ( isset( $box['headerMessage'] ) ) {
 					$this->msg( $box['headerMessage'] );
 				} else {
 					echo htmlspecialchars( $box['header'] );
 				}
 				?> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+				<ul class="dropdown-menu <?php if (isset($box['ulClass'])) echo $box['ulClass'] ?>">
           <?php
 			if ( is_array( $box['content'] ) ) {
 				echo '<li>';
@@ -194,8 +200,9 @@ class HanjiTemplate extends BaseTemplate {
 					<?php
 					$this->outputNavDropdown( array(
 						'id' => 'p-personal',
-						'headerMessage' => 'personaltools',
+						'headerSafe' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>',
 						'content' => $this->getPersonalTools(),
+						'ulClass' => "dropdown-menu-right",
 					) );
 					?>
 				</div>
