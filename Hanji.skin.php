@@ -87,8 +87,7 @@ class HanjiTemplate extends BaseTemplate {
 			return;
 		}
 
-		?>
-		<div class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>" style="display:inline-block;"
+		?><div class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>" style="display:inline-block;"
 			<?php echo Linker::tooltip( $box['id'] ) ?>>
           <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 			<?php
@@ -109,11 +108,54 @@ class HanjiTemplate extends BaseTemplate {
 				}
 				echo '</li>';
 			} else {
+				echo '<li>';
 				echo $box['content'];
+				echo '</li>';
 			}?>
           </ul>
-        </div>
-		<?php
+        </div><?php
+	}
+
+	private function outputDropdownMulti( $box ) {
+		if ( !$box['content'] ) {
+			return;
+		}
+
+		?><div class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>" style="display:inline-block;"
+			<?php echo Linker::tooltip( $box['id'] ) ?>>
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			<?php
+				if ( isset( $box['headerSafe'] ) ) {
+					echo $box['headerSafe'];
+				} else if ( isset( $box['headerMessage'] ) ) {
+					$this->msg( $box['headerMessage'] );
+				} else {
+					echo htmlspecialchars( $box['header'] );
+				}
+				?> <span class="caret"></span></button>
+		<ul class="dropdown-menu <?php if (isset($box['ulClass'])) echo $box['ulClass'] ?>">
+<?php
+			$i = 0;
+			foreach ( $box['content'] as $boxName => $box_) {
+				if ( $box_['id'] == $box['exclude'] ) continue;
+				if ($i != 0) {
+						?><li role="separator" class="divider"></li><?php
+				}
+				if ( is_array( $box_['content'] ) ) {
+					echo '<li>';
+					foreach ( $box_['content'] as $key => $item ) {
+						echo $this->makeListItem( $key, $item );
+					}
+					echo '</li>';
+				} else {
+					echo '<li>';
+					echo $box_['content'];
+					echo '</li>';
+				}
+				$i++;
+			}?>
+          </ul>
+        </div><?php
 	}
 
 	private function outputNavDropdown( $box ) {
@@ -121,9 +163,7 @@ class HanjiTemplate extends BaseTemplate {
 			return;
 		}
 
-		?>
-		<li class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"
-			<?php echo Linker::tooltip( $box['id'] ) ?>>
+		?><li class="dropdown" id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 				<?php 
 				if ( isset( $box['headerSafe'] ) ) {
@@ -134,8 +174,8 @@ class HanjiTemplate extends BaseTemplate {
 					echo htmlspecialchars( $box['header'] );
 				}
 				?> <span class="caret"></span></a>
-				<ul class="dropdown-menu <?php if (isset($box['ulClass'])) echo $box['ulClass'] ?>">
-          <?php
+					<ul class="dropdown-menu <?php if (isset($box['ulClass'])) echo $box['ulClass'] ?>">
+<?php
 			if ( is_array( $box['content'] ) ) {
 				echo '<li>';
 				foreach ( $box['content'] as $key => $item ) {
@@ -146,8 +186,7 @@ class HanjiTemplate extends BaseTemplate {
 				echo $box['content'];
 			}?>
           </ul>
-        </li>
-		<?php
+        </li><?php
 	}
 
 	private function outputButton( $box ) {
@@ -189,9 +228,10 @@ class HanjiTemplate extends BaseTemplate {
 						'id' => 'p-variants',
 						'headerMessage' => 'variants',
 						'content' => $this->data['content_navigation']['variants'],
-					) );
+				) );
 					foreach ( $this->getSidebar() as $boxName => $box ) {
-						$this->outputNavDropdown( $box );
+						if ( $box['id'] === "p-navigation")
+							$this->outputNavDropdown( $box );
 					}
 					?>
 				</ul>
@@ -229,22 +269,33 @@ class HanjiTemplate extends BaseTemplate {
 					<div class="body-dropdown-wrapper">
 						<div class="body-dropdown">
 							<?php
-							$this->outputButton( array(
+							$this->outputDropdown( array(
 								'id' => 'p-views',
 								'headerMessage' => 'views',
 								'content' => $this->data['content_navigation']['views'],
+								'ulClass' => "dropdown-menu-right",
 							) );
 							$this->outputDropdown( array(
 								'id' => 'p-namespaces',
 								'headerMessage' => 'namespaces',
 								'content' => $this->data['content_navigation']['namespaces'],
+								'ulClass' => "dropdown-menu-right",
 							) );
 
 							$this->outputDropdown( array(
 								'id' => 'p-actions',
 								'headerMessage' => 'actions',
 								'content' => $this->data['content_navigation']['actions'],
-							) );?>
+								'ulClass' => "dropdown-menu-right",
+							) );
+							$this->outputDropdownMulti( array(
+								'id' => 'p-tb',
+								'headerMessage' => 'toolbox',
+								'content' => $this->getSidebar(),
+								'exclude' => 'p-navigation',
+								'ulClass' => "dropdown-menu-right",
+							) );
+							?>
 						</div>
 					</div>
 

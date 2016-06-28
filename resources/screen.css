@@ -1,4 +1,5 @@
 html, body {
+	min-width:320px;
     background-color: #eee;
 }
 
@@ -40,7 +41,11 @@ html, body {
 }
 
 .dropdown-menu {
-    z-index : 1;
+    z-index : 2;
+}
+
+.dropdown-menu a {
+	z-index : 3;
 }
 
 #nav .navbar-form {
@@ -111,7 +116,14 @@ img {
     display:inline-block;
 }
 
-
+@media (max-width:991px) {
+	.navbar-brand {
+		margin-right : 0;
+	}
+	.nav-dropdown {
+		margin-left : 1rem;
+	}
+}
 
 /**
  * Search box
@@ -187,14 +199,27 @@ img {
 
 @media (max-width: 991px) {
     #body-wrapper {
-        padding-top:0;
+        padding: 0 0 3rem 0;
     }
+
+	.firstHeading {
+		margin-left: 2rem;
+	}
+
+	.mw-body-content {
+		padding: 0 1rem;
+	}
 
     .body-dropdown-wrapper {
         width:100%;
         float: none;
         margin-bottom: 3rem;
     }
+
+	.body-dropdown-wrapper button {
+		height:40px;
+		border-radius: 0;
+	}
 }
 
 .mw-label label {
