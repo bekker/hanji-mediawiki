@@ -206,7 +206,6 @@ class HanjiTemplate extends BaseTemplate {
 					) );
 					?>
 				</div>
-
 				<div class="nav navbar-nav navbar-right search-box">
 					<form
 						action="<?php $this->text( 'wgScript' ) ?>"
@@ -227,24 +226,26 @@ class HanjiTemplate extends BaseTemplate {
 		<div id="body-wrapper" class="container">
 			<div id="mw-wrapper">
 				<div class="mw-body" role="main">
-					<div class="body-dropdown">
-						<?php
-						$this->outputButton( array(
-							'id' => 'p-views',
-							'headerMessage' => 'views',
-							'content' => $this->data['content_navigation']['views'],
-						) );
-						$this->outputDropdown( array(
-							'id' => 'p-namespaces',
-							'headerMessage' => 'namespaces',
-							'content' => $this->data['content_navigation']['namespaces'],
-						) );
+					<div class="body-dropdown-wrapper">
+						<div class="body-dropdown">
+							<?php
+							$this->outputButton( array(
+								'id' => 'p-views',
+								'headerMessage' => 'views',
+								'content' => $this->data['content_navigation']['views'],
+							) );
+							$this->outputDropdown( array(
+								'id' => 'p-namespaces',
+								'headerMessage' => 'namespaces',
+								'content' => $this->data['content_navigation']['namespaces'],
+							) );
 
-						$this->outputDropdown( array(
-							'id' => 'p-actions',
-							'headerMessage' => 'actions',
-							'content' => $this->data['content_navigation']['actions'],
-						) );?>
+							$this->outputDropdown( array(
+								'id' => 'p-actions',
+								'headerMessage' => 'actions',
+								'content' => $this->data['content_navigation']['actions'],
+							) );?>
+						</div>
 					</div>
 
 					<?php if ( $this->data['sitenotice'] ) { ?>

@@ -21,7 +21,7 @@ html, body {
     float: right!important;
 }
 
-.navbar-header:after, .navbar-nav:before {
+.navbar-header:after, .navbar-nav:before, #body-wrapper:before {
     display: none;
     content: "";
 }
@@ -174,9 +174,26 @@ img {
     margin-top:4rem;
 }
 
-@media (min-width: 768px) {
-    .body-dropdown {
-        float: right;
+.body-dropdown {
+    float:right;
+}
+
+.body-dropdown-wrapper {
+    position:relative;
+    width:300px;
+    height:40px;
+    float: right;
+}
+
+@media (max-width: 991px) {
+    #body-wrapper {
+        padding-top:0;
+    }
+
+    .body-dropdown-wrapper {
+        width:100%;
+        float: none;
+        margin-bottom: 3rem;
     }
 }
 
@@ -203,6 +220,18 @@ fieldset tr {
         text-align: left !important;
         width:auto !important;
     }
+}
+
+#mw-content-text ul > li {
+    list-style-type: disc;
+}
+
+#toc ul > li {
+    list-style-type: none;
+}
+
+#mw-footer li{
+    list-style-type: none;
 }
 
 /* Bootstrap overlapping */
