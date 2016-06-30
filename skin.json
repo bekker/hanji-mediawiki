@@ -20,8 +20,8 @@
 		  	"position" : "top",
 			"styles": [
 				"resources/bootstrap/css/bootstrap.min.css",
-				"resources/clearFont.css",
-				"resources/screen.css"
+				"resources/font.css",
+				"resources/base.css"
 			]
 		},
 	  	"skins.hanji.js": {

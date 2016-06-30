@@ -1,10 +1,21 @@
+/**
+ * hanji-mediawiki
+ * base.css
+ * Navigation bars and overall layout
+ * Jang Ryeol (ryeolj5911@gmail.com)
+ */
+
+/**
+ * If the page is too narrow, menu becomes messy
+ */
 html, body {
 	min-width:320px;
     background-color: #eee;
 }
 
 /**
- * Navbar Collapse Disable
+ * Bootstrap navbar collapses by default.
+ * Disable it.
  */
 .navbar-collapse.collapse {
     display: block!important;
@@ -30,6 +41,7 @@ html, body {
 .navbar-header {
     margin-left: 0;
 }
+
 /**
  * Navigation Bar.
  */
@@ -39,22 +51,9 @@ html, body {
     border: none;
     margin-bottom:0;
 }
-/*
-.dropdown-menu {
-    z-index : 2;
-}
 
-.dropdown-menu a {
-	z-index : 3;
-}
-*/
 #nav .navbar-form {
     margin:0;
-}
-
-img {
-    max-width:100%;
-    height:auto;
 }
 
 .nav-dropdown {
@@ -180,6 +179,11 @@ img {
     margin-top:0;
     padding-top:0;
     border-bottom: none;
+}
+
+img {
+    max-width:100%;
+    height:auto;
 }
 
 #mw-content-text {
