@@ -365,6 +365,7 @@ class HanjiTemplate extends BaseTemplate {
 									?>
 								</li>
 							<?php } ?>
+							<li>Powered by <a href="http://getbootstrap.com">Bootstrap</a> and <a href="http://glyphicons.com">Glyphicon</a></li>
 						</ul>
 					</div>
 				</div>

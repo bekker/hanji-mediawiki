@@ -258,15 +258,15 @@ fieldset tr {
     }
 }
 
-#mw-content-text ul > li {
+#mw-content-text ul {
     list-style-type: disc;
 }
 
-#toc ul > li {
+#toc ul {
     list-style-type: none;
 }
 
-#mw-footer li{
+#mw-footer ul {
     list-style-type: none;
 }
 
