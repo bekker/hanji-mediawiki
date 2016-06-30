@@ -1,6 +1,6 @@
 {
 	"name": "Hanji",
-	"version": "1.0",
+	"version": "0.0",
 	"author": "Jang Ryeol",
 	"url": "https://github.com/bekker/hanji-mediawiki",
 	"descriptionmsg": "hanji-desc",
@@ -18,24 +18,18 @@
 	"ResourceModules": {
 		"skins.hanji.styles": {
 		  	"position" : "top",
-			"styles": {
-				"resources/bootstrap/css/bootstrap.min.css": {
-					"media": "screen"
-				},
-				"resources/clearFont.css": {
-				  "media": "screen"
-				},
-			    "resources/screen.css": {
-				  "media": "screen"
-				}
-			}
+			"styles": [
+				"resources/bootstrap/css/bootstrap.min.css",
+				"resources/clearFont.css",
+				"resources/screen.css"
+			]
 		},
 	  	"skins.hanji.js": {
-		  "position" : "bottom",
-		  "scripts": [
-			"resources/main.js",
-			"resources/bootstrap/js/bootstrap.min.js"
-		  ]
+			"position" : "bottom",
+			"scripts": [
+				"resources/main.js",
+				"resources/bootstrap/js/bootstrap.min.js"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
