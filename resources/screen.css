@@ -39,7 +39,7 @@ html, body {
     border: none;
     margin-bottom:0;
 }
-
+/*
 .dropdown-menu {
     z-index : 2;
 }
@@ -47,7 +47,7 @@ html, body {
 .dropdown-menu a {
 	z-index : 3;
 }
-
+*/
 #nav .navbar-form {
     margin:0;
 }
@@ -208,6 +208,17 @@ img {
 
 	.mw-body-content {
 		padding: 0 1rem;
+	}
+
+	#mw-footer .row {
+		margin: 0;
+		padding: 0;
+		max-width: 100%;
+		padding: 0 1rem;
+	}
+
+	#mw-footer ul {
+		margin-left: 0;
 	}
 
     .body-dropdown-wrapper {

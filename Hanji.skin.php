@@ -273,13 +273,13 @@ class HanjiTemplate extends BaseTemplate {
 								'id' => 'p-views',
 								'headerMessage' => 'views',
 								'content' => $this->data['content_navigation']['views'],
-								'ulClass' => "dropdown-menu-right",
+								//'ulClass' => "dropdown-menu-right",
 							) );
 							$this->outputDropdown( array(
 								'id' => 'p-namespaces',
 								'headerMessage' => 'namespaces',
 								'content' => $this->data['content_navigation']['namespaces'],
-								'ulClass' => "dropdown-menu-right",
+								//'ulClass' => "dropdown-menu-right",
 							) );
 
 							$this->outputDropdown( array(
