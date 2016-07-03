@@ -7,6 +7,9 @@
 	"namemsg": "skinname-hanji",
 	"license-name": "GPL-2.0+",
 	"type": "skin",
+	"requires": {
+		"MediaWIki": ">= 1.25.0"
+	},
 	"ValidSkinNames": {
 		"hanji": "Hanji"
 	},

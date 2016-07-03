@@ -201,6 +201,10 @@ img {
     float: right;
 }
 
+.postedit {
+    top: 100px !important;
+}
+
 @media (max-width: 991px) {
     #body-wrapper {
         padding: 0 0 3rem 0;

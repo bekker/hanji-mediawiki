@@ -19,6 +19,7 @@ class SkinHanji extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 		$out->addHeadItem('viewport', '<meta name="viewport" content="width=device-width,initial-scale=1">');
+		$out->addModules( 'skins.hanji.js');
 	}
 
 	/**
@@ -31,7 +32,6 @@ class SkinHanji extends SkinTemplate {
 		$out->addModuleStyles( array(
 			'mediawiki.skinning.interface', 'skins.hanji.styles'
 		));
-		$out->addModuleScripts( array('skins.hanji.js'));
 	}
 }
 
