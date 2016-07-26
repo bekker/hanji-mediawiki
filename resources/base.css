@@ -150,9 +150,15 @@ html, body {
     border-radius:0;
 }
 
+.container {
+	max-width: 970px;
+	margin: 0 auto;
+}
+
 @media (max-width:991px){
     .container {
         width: 100%;
+        max-width: 991px;
     }
     .search-box {
         width: calc(100% + 30px);
@@ -164,8 +170,9 @@ html, body {
     }
 }
 
-.container {
-    margin: 0 auto;
+pre {
+	white-space:pre;
+	overflow-x:auto;
 }
 
 
@@ -179,6 +186,11 @@ html, body {
     margin-top:0;
     padding-top:0;
     border-bottom: none;
+}
+
+.mw-headline-number {
+	font-weight:bold;
+	color: #0053a1;
 }
 
 img {
