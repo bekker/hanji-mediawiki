@@ -314,3 +314,59 @@ code {
     background-image: url('images/external-link-ltr-icon.svg');
     padding-right: 13px;
 }
+
+/* Code Highlight */
+/* https://github.com/chriskempson/base16-tomorrow-scheme */
+.mw-highlight pre {
+	/* base00*/
+	background-color: #ffffff;
+}
+
+.mw-highlight .n,
+.mw-highlight .o {
+	/*base05*/
+	color: #4d4d4c;
+}
+
+.mw-highlight .c1 {
+    /*base03*/
+	color: #82908c;
+}
+
+.mw-highlight .k,
+.mw-highlight .kt,
+.mw-highlight .kn,
+.mw-highlight .kd {
+	/*base0E*/
+	color: #8959a8;
+}
+
+.mw-highlight .nc {
+	/*base0A*/
+	color:#eab700;
+}
+
+.mw-highlight .nf,
+.mw-highlight .nb,
+.mw-highlight .na {
+	/*base0D*/
+	color: #4271ae;
+}
+
+.mw-highlight .nv {
+	/*base08*/
+	color: #c82829;
+}
+
+/* string */
+.mw-highlight .s,
+.mw-highlight .nn,
+.mw-highlight .s2 {
+	/*base0B*/
+	color: #718c00;
+}
+
+.mw-highlight .mi {
+	/*base09*/
+	color: #f5871f;
+}
