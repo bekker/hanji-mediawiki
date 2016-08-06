@@ -336,6 +336,7 @@ code {
 .mw-highlight .k,
 .mw-highlight .kt,
 .mw-highlight .kn,
+.mw-highlight .kc,
 .mw-highlight .kd {
 	/*base0E*/
 	color: #8959a8;
@@ -348,6 +349,7 @@ code {
 
 .mw-highlight .nf,
 .mw-highlight .nb,
+.mw-highlight .nt,
 .mw-highlight .na {
 	/*base0D*/
 	color: #4271ae;
