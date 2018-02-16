@@ -222,7 +222,8 @@
    font-family: 'Noto Sans KR';
    font-style: normal;
    font-weight: 400;
-   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),
+   src: local('Noto Sans CJK KR Regular'),
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
  }
@@ -238,7 +239,8 @@
    font-family: 'Noto Sans KR';
    font-style: normal;
    font-weight: 700;
-   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),
+   src: local('Noto Sans CJK KR Bold'),
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');
  }
@@ -390,10 +392,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	font-weight: 700;
 }
 
-code, kbd, pre, samp {
-	font-family: 'Nanum Gothic Coding', monospace;
+code, kbd, pre, samp, td.mw-enhanced-rc {
+	font-family: 'DejaVu Sans Mono', 'Nanum Gothic Coding', monospace;
 }
 
-td.mw-enhanced-rc {
-	font-family: 'Nanum Gothic Coding', monospace;
-}
