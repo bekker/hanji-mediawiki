@@ -303,8 +303,13 @@ code {
     padding: 1px 4px;
 }
 
+/* Markdown Extension */
 pre code {
-	border: 0;
+	border: none;
+}
+
+.hljs {
+	background: none !important;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
