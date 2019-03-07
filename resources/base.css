@@ -303,6 +303,10 @@ code {
     padding: 1px 4px;
 }
 
+pre code {
+	border: 0;
+}
+
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border: none;
 }
