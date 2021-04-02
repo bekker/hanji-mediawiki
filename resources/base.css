@@ -151,15 +151,23 @@ html, body {
 }
 
 .container {
-	max-width: 970px;
+	max-width: 1350px;
 	margin: 0 auto;
 }
 
-@media (max-width:991px){
+@media (min-width: 1400px) {
+    .container {
+        width: 1350px;
+    }
+}
+
+@media (max-width: 1400px) {
     .container {
         width: 100%;
-        max-width: 991px;
     }
+}
+
+@media (max-width: 992px) {
     .search-box {
         width: calc(100% + 30px);
         margin: 0 -15px !important;
@@ -381,3 +389,18 @@ pre code {
 	/*base09*/
 	color: #f5871f;
 }
+
+.mw-body-content p {
+    white-space: pre-line;
+    line-height: 180%;
+    margin: 10px 0;
+}
+
+.mw-body-content li {
+    margin-bottom: 0.3em;
+}
+
+pre {
+    margin: 10px 0;
+}
+

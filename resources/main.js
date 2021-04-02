@@ -15,12 +15,13 @@ function navSlide() {
     } else {
         $nav.removeClass('on-top');
     }
-
-    console.log("scrolll");
 }
 
 // Handler
 // =================================================
 
 $(window).scroll(navSlide);
-console.log("loaded");
+var $tables = $('table').not('.mw-changeslist-line').not('.mw-recentchanges-table');
+$tables.addClass('table table-striped table-hover');
+$tables.removeClass('wikitable');
+
