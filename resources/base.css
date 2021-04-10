@@ -332,6 +332,16 @@ pre code {
     padding-right: 13px;
 }
 
+.mw-body-content p {
+    white-space: pre-line;
+    line-height: 180%;
+    margin: 10px 0;
+}
+
+.mw-body-content li {
+    margin-bottom: 0.3em;
+}
+
 pre {
     margin: 10px 0;
 }
